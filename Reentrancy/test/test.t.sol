@@ -7,10 +7,10 @@ import "../Exploit.sol";
 import "../fixed.sol";
 
 contract Reentrancy is Test {
-     VulnerableBank bank;
-     Attacker attacker;
+    VulnerableBank bank;
+    Attacker attacker;
 
-     address user = makeAddr("user");
+    address user = makeAddr("user");
 
     function setUp() public {
         bank = new VulnerableBank();
@@ -19,7 +19,7 @@ contract Reentrancy is Test {
         vm.deal(user, 1 ether);
     }
 
-  function testReentrancyAttack() public {
+    function testReentrancyAttack() public {
         uint256 bankBefore = address(bank).balance;
         uint256 attackerBefore = address(attacker).balance;
 

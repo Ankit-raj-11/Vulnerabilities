@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.36;
+pragma solidity ^0.8.20;
 
 contract Treasury {
     address public owner;
@@ -13,7 +13,9 @@ contract Treasury {
         treasury = msg.sender;
     }
 
-    function deposit() external payable {}
+    function deposit() external payable {
+        
+    }
 
    
     function setFee(uint256 newFee) external {
@@ -32,6 +34,7 @@ contract Treasury {
 
    
     function withdrawFees() external {
-        payable(treasury).transfer(address(this).balance);
+        (bool success, ) = payable(treasury).call{value: address(this).balance}("");
+        require(success, "transaction failed");
     }
 }
