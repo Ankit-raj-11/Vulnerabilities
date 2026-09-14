@@ -18,6 +18,8 @@ contract VulnerableProxy {
         lib = _lib;
     }
 
+    receive() external payable {}
+
     fallback() external payable {
         // VULNERABLE: Arbitrary delegatecall with user-controlled msg.data.
         // delegatecall runs the logic of `lib` in the storage context of `VulnerableProxy`.
