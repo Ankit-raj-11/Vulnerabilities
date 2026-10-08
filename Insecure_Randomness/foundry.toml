@@ -1,0 +1,4 @@
+[profile.default]
+src = "."
+test = "test"
+libs = ["../Reentrancy/lib", "lib"]
